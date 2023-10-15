@@ -7,7 +7,14 @@ function Header() {
 
   const [showMenu, setShowMenu] = useState(false);
   const { educations, loading } = useSelector((state) => state.educations);
-
+  const [sub1,setSub1]=useState(false);
+  const changeSub1 = ()=>{
+    if(sub1==false){
+      setSub1(true);
+    }else{
+      setSub1(false);
+    }
+  }
   const changeMenuDisplay = () => {
     if (showMenu) {
       setShowMenu(false);
@@ -48,8 +55,8 @@ function Header() {
                     <a href="#apply">Apply Now</a>
                   </li>
                   <li className="has-sub">
-                    <a href="javascript:void(0)">Loại giáo dục</a>
-                    <ul className="sub-menu">
+                    <a href="#" onClick={(e)=>changeSub1()}>Loại giáo dục</a>
+                    <ul className="sub-menu" style={{'display': sub1==true?'block':'none'}}>
                       {educations && educations.length>0 && educations.map((item)=>(
                       <li>
                       <Link to={`/chitiet/${item.id}`}>{item.name}</Link>

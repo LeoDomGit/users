@@ -27,7 +27,7 @@ function Header() {
             <div className="col">
               <nav className="main-nav">
                 {/* ***** Logo Start ***** */}
-                <a href="index.html" className="logo">
+                <a href="/" className="logo">
                  MARATHON 
                 </a>
                 {/* ***** Logo End ***** */}

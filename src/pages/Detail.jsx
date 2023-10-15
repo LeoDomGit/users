@@ -68,6 +68,9 @@ function Detail() {
                   <p>
                        Giá :  {Intl.NumberFormat('en-US').format(course.price)} đ
                   </p>
+                  <p>
+                       Giờ học : {course.duration} h
+                  </p>
                   <div className="row mt-4">
                   <div class="accordion accordion-flush" id="accordionFlushExample">
             {module &&

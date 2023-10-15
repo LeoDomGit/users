@@ -54,16 +54,19 @@ function Detail() {
                       Nov <span>12</span>
                     </h6> */}
                   </div>
-                  <a href="meeting-details.html">
+                  <a href="#">
                     <img src="assets/images/single-meeting.jpg" alt="" />
                   </a>
                 </div>
                 <div className="down-content">
-                  <a href="meeting-details.html">
+                  <a href="#">
                     <h4>{course.name}</h4>
                   </a>
                   <p>
                         {course.summary}
+                  </p>
+                  <p>
+                       Giá :  {Intl.NumberFormat('en-US').format(course.price)} đ
                   </p>
                   <div className="row mt-4">
                   <div class="accordion accordion-flush" id="accordionFlushExample">

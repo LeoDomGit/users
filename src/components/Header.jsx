@@ -28,7 +28,7 @@ function Header() {
               <nav className="main-nav">
                 {/* ***** Logo Start ***** */}
                 <a href="index.html" className="logo">
-                  Edu Meeting
+                 MARATHON 
                 </a>
                 {/* ***** Logo End ***** */}
                 {/* ***** Menu Start ***** */}
@@ -42,7 +42,7 @@ function Header() {
                     </a>
                   </li>
                   <li>
-                    <a href="meetings.html">Meetings</a>
+                    <a href="#">Meetings</a>
                   </li>
                   <li className="scroll-to-section">
                     <a href="#apply">Apply Now</a>

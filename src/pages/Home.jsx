@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Slider from '../components/Slider'
 import Courses from '../components/Courses'
 import Carousel from '../components/Carousel'
+import Contact from '../components/Contact'
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
         <Carousel/>
         <Slider/>
         <Courses/>
+        <Contact/>
     </>
   )
 }

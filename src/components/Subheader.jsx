@@ -9,8 +9,7 @@ function Subheader() {
             <div className="col-lg-8 col-sm-8">
               <div className="left-content">
                 <p>
-                  This is an educational <em>HTML CSS</em> template by
-                  TemplateMo website.
+                  Marathon <em>Education</em> 
                 </p>
               </div>
             </div>

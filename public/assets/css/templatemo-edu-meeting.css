@@ -70,7 +70,10 @@ ul, li {
   margin: 0;
   list-style: none;
 }
-
+.categories li{
+  width: 100%;
+  font-family: 'Times New Roman', Times, serif;
+}
 header, nav, section, article, aside, footer, hgroup {
   display: block;
 }
@@ -652,6 +655,7 @@ header
     font-size: 12px;
     font-weight: 400;
   }
+  
   .header-area .main-nav .nav li.submenu ul li a:hover:before {
     width: 0px;
   }
@@ -865,7 +869,9 @@ services
   position: absolute;
   right: -85px;
 }
-
+#meetings .col-lg-4{
+  padding-top: 4%;
+}
 .services .owl-nav .owl-next:before {
   display: inline-block;
   font-family: 'FontAwesome';
@@ -887,7 +893,7 @@ upcoming meetings
 ---------------------------------------------
 */
 #meetings{
-  padding-top: 100px;
+  padding-top: 5%;
 }
 section.upcoming-meetings {
   background-image: url(../images/meetings-bg.jpg);
@@ -1014,6 +1020,7 @@ section.upcoming-meetings .categories .main-button-red a {
   margin-left: 50px;
   color: #1f272b;
   font-size: 14px;
+  min-height: 46px;
 }
 
 
@@ -1861,4 +1868,22 @@ responsive
 }
 .show{
   display: block;
+}
+.categories ul li button{
+  opacity: 1;
+  display: block;
+  background: black;
+  color: #f7f7f7!important;
+  padding-left: 20px;
+  height: 40px;
+  line-height: 40px;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  position: relative;
+  font-size: 13px;
+  font-weight: 400;
+  border: none;
+  width: 100%;
 }

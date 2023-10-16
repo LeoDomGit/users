@@ -8,7 +8,7 @@ function Courses() {
   const [courses,setCourses] = useState([]);
   const url =`https://api.trungthanhweb.com/api/`;
   const urlimg =`https://api.trungthanhweb.com/images/`;
-
+  
   useEffect(() => {
     dispatch(getEdu());
     fetch(url+'getCurrentCourses')

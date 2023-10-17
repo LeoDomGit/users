@@ -80,6 +80,7 @@ header, nav, section, article, aside, footer, hgroup {
 
 * {
   box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 html, body {

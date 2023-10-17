@@ -57,8 +57,8 @@ function Header() {
                   <li className="has-sub">
                     <a href="#" onClick={(e)=>changeSub1()}>Loại giáo dục</a>
                     <ul className="sub-menu" style={{'display': sub1==true?'block':'none'}}>
-                      {educations && educations.length>0 && educations.map((item)=>(
-                      <li>
+                      {educations && educations.length>0 && educations.map((item,index)=>(
+                      <li key={index}>
                       <Link to={`/chitiet/${item.id}`}>{item.name}</Link>
                     </li>
                       ))}

@@ -218,7 +218,7 @@ function Home() {
                                             )}
                                           </span>
                                         </div>
-                                        <a href={`/`+item.id}>
+                                        <a href={``+item.id}>
                                           <img
                                             src={urlimg + item.image}
                                             alt=""

@@ -218,20 +218,20 @@ function Home() {
                                             )}
                                           </span>
                                         </div>
-                                        <a href={``+item.id}>
+                                        <Link to={`/${item.id}`}>
                                           <img
                                             src={urlimg + item.image}
                                             alt=""
                                           />
-                                        </a>
+                                        </Link>
                                       </div>
                                       <div className="down-content">
                                         <div className="date">
                                           <h6>{/* Nov <span>12</span> */}</h6>
                                         </div>
-                                        <a href={`/`+item.id}>
+                                        <Link to={`/${item.id}`}>
                                           <h4>{item.name}</h4>
-                                        </a>
+                                        </Link>
                                         <p style={{ marginLeft: "0px" }}>
                                           {item.summary}
                                         </p>

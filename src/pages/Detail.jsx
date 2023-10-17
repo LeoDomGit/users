@@ -3,16 +3,38 @@ import { useParams, Link } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import Swal from "sweetalert2";
 import Header from "../components/Header";
+import Button from 'react-bootstrap/Button';
 function Detail() {
   const { id } = useParams();
-  console.log(id);
   const url = `https://api.trungthanhweb.com/api/`;
   const url1 = `https://api.trungthanhweb.com/images/`;
   const [course, setCourse] = useState({});
   const [module, setModule] = useState([]);
   const [schedule, setschedule] = useState([]);
   const [bookSchedule,setBookSchedule]= useState(0);
-  console.log(bookSchedule);
+  const [ScheduleTime,setTime]= useState('');
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const setBookSchedule1= (id)=>{
+    var obj = new Object();
+    schedule.forEach(el => {
+      if(el.id==id){
+        obj=el;
+      }
+    }); 
+    console.log(obj.schedule.time);
+    setTime(obj.schedule.time);
+
+  }
+  const handleShow1 = ()=>{
+    if(ScheduleTime==''){
+      setBookSchedule(schedule[0].schedule.id)
+      setTime(schedule[0].schedule.time)
+      
+    }
+    handleShow();
+  }
   const Toast = Swal.mixin({
     toast: true,
     position: "top-end",
@@ -33,6 +55,7 @@ function Detail() {
         setModule(JSON.parse(res[0].detail));
       });
   }, [id]);
+  
   useEffect(() => {
     var arr = [];
     fetch(url + `getScheduleUser/` + id)
@@ -46,12 +69,38 @@ function Detail() {
           arr.push(item);
         });
         setschedule(arr);
-        console.log(schedule);
+        // console.log();
+        setBookSchedule(schedule[0]);
       });
   }, [id]);
   return (
     <>
       <Header />
+      <Modal
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered show={show}
+    >
+      <Modal.Header closeButton onClick={(e)=>handleClose()}>
+        <Modal.Title id="contained-modal-title-vcenter">
+        <h4>Đăng ký khóa học</h4>
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <div className="row w-100">
+          <div className="col-md">
+          <input type="text" className="form-control mb-2" placeholder="Tên học viên" />
+          <input type="text" className="form-control mb-2" placeholder="Số diện thoại học viên" />
+          <input type="text" className="form-control mb-2" placeholder="Email học viên" />
+          <h5 className="mt-3">Lịch học: </h5>
+          <p style={{'fontSize':'20px'}}>{ScheduleTime}</p>
+          </div>
+        </div>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={(e)=>handleClose()}>Close</Button>
+      </Modal.Footer>
+    </Modal>
       <section className="heading-page header-text" id="top">
         <div className="container">
           <div className="row">
@@ -103,12 +152,12 @@ function Detail() {
                         <div className="col-md-3"></div>
                         {schedule &&
                         <div className="col-md">
-                          <select name="" className="form-control w-100" onChange={(e)=>setBookSchedule(e.target.value)} id="">
+                          <select name="" className="form-control w-100" onChange={(e)=>setBookSchedule1(e.target.value)} id="">
                             {schedule.length>0 && schedule.map((item,index)=>(
                               <option key={index} value={item.id}>{item.teacher} - {item.schedule.time}</option>
                             ))}
                           </select>
-                          <button className="btn btn-primary w-100 mt-3" >Thêm</button>
+                          <button className="btn btn-primary w-100 mt-3" onClick={(e)=>handleShow1()}>Thêm</button>
                         </div>
                         }
                       </div>

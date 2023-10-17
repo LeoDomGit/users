@@ -90,7 +90,7 @@ function Detail() {
             {module &&
                 module.length > 0 &&
                 module.map((item, index) => (
-              <div class="accordion-item">
+              <div key={index} class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingOne">
                   <button
                     class="accordion-button collapsed"
@@ -131,7 +131,7 @@ function Detail() {
             </div>
             <div className="col-lg-12">
               <div className="main-button-red">
-                <a href="meetings.html">Back To Meetings List</a>
+                <a href="#">Back To Meetings List</a>
               </div>
             </div>
           </div>

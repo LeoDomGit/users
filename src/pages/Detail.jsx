@@ -4,6 +4,8 @@ import Modal from 'react-bootstrap/Modal';
 import Swal from "sweetalert2";
 import Header from "../components/Header";
 function Detail() {
+  const { id } = useParams();
+  console.log(id);
   const url = `https://api.trungthanhweb.com/api/`;
   const url1 = `https://api.trungthanhweb.com/images/`;
   const [course, setCourse] = useState({});
@@ -22,7 +24,7 @@ function Detail() {
       toast.addEventListener("mouseleave", Swal.resumeTimer);
     },
   });
-  const { id } = useParams();
+
   useEffect(() => {
     fetch(url + `getSingleCourses/` + id)
       .then((res) => res.json())

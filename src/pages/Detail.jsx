@@ -85,14 +85,14 @@ function Detail() {
                        Giờ học : {course.duration} h
                   </h4>
                   <div className="row mt-4">
-                  <div class="accordion accordion-flush" id="accordionFlushExample">
+                  <div className="accordion accordion-flush" id="accordionFlushExample">
             {module &&
                 module.length > 0 &&
                 module.map((item, index) => (
-              <div key={index} class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
+              <div key={index} className="accordion-item">
+                <h2 className="accordion-header" id="flush-headingOne">
                   <button
-                    class="accordion-button collapsed"
+                    className="accordion-button collapsed"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target={`#flush-collapse${++index}`}
@@ -104,11 +104,11 @@ function Detail() {
                 </h2>
                 <div
                   id={`flush-collapse${index}`}
-                  class="accordion-collapse collapse"
+                  className="accordion-collapse collapse"
                   aria-labelledby={`flush-heading${++index}`}
                   data-bs-parent="#accordionFlushExample"
                 >
-                  <div class="accordion-body">
+                  <div className="accordion-body">
                   <div style={{'fontFamily':"'Times New Roman', Times, serif"}}
                       dangerouslySetInnerHTML={{__html: item.detail}}
 

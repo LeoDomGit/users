@@ -49,6 +49,9 @@ function Detail() {
     }
     handleShow();
   }
+  const submitBooking=()=>{
+    // console.log(bookSchedule.id);
+  }
   const Toast = Swal.mixin({
     toast: true,
     position: "top-end",
@@ -112,7 +115,7 @@ function Detail() {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={(e)=>handleClose()}>Close</Button>
+        <Button onClick={(e)=>submitBooking()}>Đăng Ký</Button>
       </Modal.Footer>
     </Modal>
       <section className="heading-page header-text" id="top">

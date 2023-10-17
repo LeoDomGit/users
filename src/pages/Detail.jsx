@@ -108,6 +108,7 @@ function Detail() {
                               <option key={index} value={item.id}>{item.teacher} - {item.schedule.time}</option>
                             ))}
                           </select>
+                          <button className="btn btn-primary w-100 mt-3" >Thêm</button>
                         </div>
                         }
                       </div>

@@ -13,8 +13,12 @@ function Detail() {
   const [schedule, setschedule] = useState([]);
   const [bookSchedule,setBookSchedule]= useState(0);
   const [ScheduleTime,setTime]= useState('');
+  const [cusName,setCusName]= useState('');
+  const [cusEmail,setCusEmail]= useState('');
+  const [cusPhone,setCusPhone]= useState('');
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+  const validPhone = /(0[3|5|7|8|9])+([0-9]{8})\b/g;
   const handleShow = () => setShow(true);
   const setBookSchedule1= (id)=>{
     var obj = new Object();
@@ -26,6 +30,16 @@ function Detail() {
     console.log(obj.schedule.time);
     setTime(obj.schedule.time);
 
+  }
+  const setPhone1= (phone)=>{
+    if (phone.match(validPhone)) {
+      setCusPhone(phone)
+  }
+  }
+  const setEmail1= (email)=>{
+    if (email.match(/(.+)@(gmail+)\.(com)/i)){
+      setCusEmail(email)
+  }
   }
   const handleShow1 = ()=>{
     if(ScheduleTime==''){
@@ -89,9 +103,9 @@ function Detail() {
       <Modal.Body>
         <div className="row w-100">
           <div className="col-md">
-          <input type="text" className="form-control mb-2" placeholder="Tên học viên" />
-          <input type="text" className="form-control mb-2" placeholder="Số diện thoại học viên" />
-          <input type="text" className="form-control mb-2" placeholder="Email học viên" />
+          <input type="text" className={`mb-2 form-control ${cusName == '' ? 'border border-danger' : ''}`} onChange={(e)=>setCusName(e.target.value)} placeholder="Tên học viên" />
+          <input type="text" className={`form-control mb-2 ${cusPhone=='' ? 'border border-danger' : ''}`} placeholder="Số diện thoại học viên" onChange={(e)=>setPhone1(e.target.value)}/>
+          <input type="text" className={`form-control mb-2 ${cusEmail=='' ? 'border border-danger' : ''}`} onChange={(e)=>setEmail1(e.target.value)} placeholder="Email học viên" />
           <h5 className="mt-3 ms-2">Lịch học: </h5>
           <p className="ms-2" style={{'fontSize':'20px'}}>{ScheduleTime}</p>
           </div>
@@ -143,7 +157,7 @@ function Detail() {
                           <p style={{'fontSize':'18px'}}>{course.summary}</p>
                           <br />
                           <h5>
-                            Giá :{" "}
+                            Giá :
                             {Intl.NumberFormat("en-US").format(course.price)} đ
                           </h5>
                           <br />

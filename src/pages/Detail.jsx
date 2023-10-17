@@ -92,8 +92,8 @@ function Detail() {
           <input type="text" className="form-control mb-2" placeholder="Tên học viên" />
           <input type="text" className="form-control mb-2" placeholder="Số diện thoại học viên" />
           <input type="text" className="form-control mb-2" placeholder="Email học viên" />
-          <h5 className="mt-3">Lịch học: </h5>
-          <p style={{'fontSize':'20px'}}>{ScheduleTime}</p>
+          <h5 className="mt-3 ms-2">Lịch học: </h5>
+          <p className="ms-2" style={{'fontSize':'20px'}}>{ScheduleTime}</p>
           </div>
         </div>
       </Modal.Body>

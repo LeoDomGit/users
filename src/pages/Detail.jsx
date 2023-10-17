@@ -7,6 +7,7 @@ function Detail() {
     const url1 =`https://api.trungthanhweb.com/images/`;
     const [course,setCourse]=useState({}); 
     const [module, setModule] = useState([]);
+    const [schedule, setschedule] = useState([]);
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -24,6 +25,19 @@ function Detail() {
             setCourse(res[0]);
             setModule(JSON.parse(res[0].detail));
         })
+    },[id])
+    useEffect(()=>{
+      var arr=[];
+      fetch(url+`getScheduleUser/`+id).then(res=>res.json()).then((res)=>{
+        res.forEach(el => {
+          var item= new Object();
+          item.teacher= el.teacher;
+          item.id=Number(el.id);
+          item.schedule=JSON.parse(el.schedule)[0];
+          arr.push(item);
+        });
+        setschedule(arr);
+    })
     },[id])
   return (
 <>

@@ -74,17 +74,16 @@ function Detail() {
                 </div>
                 <div className="down-content">
                   <a href="#">
-                    <h4>{course.name}</h4>
-                  </a>
-                  <p>
+                  </a><br />
+                  <h4 >
                         {course.summary}
-                  </p>
-                  <p>
+                  </h4><br />
+                  <h4>
                        Giá :  {Intl.NumberFormat('en-US').format(course.price)} đ
-                  </p>
-                  <p>
+                  </h4><br />
+                  <h4>
                        Giờ học : {course.duration} h
-                  </p>
+                  </h4>
                   <div className="row mt-4">
                   <div class="accordion accordion-flush" id="accordionFlushExample">
             {module &&
@@ -100,7 +99,7 @@ function Detail() {
                     aria-expanded="false"
                     aria-controls={`flush-collapse${index}`}
                   >
-                   {item.module}
+                   <h5>{item.module}</h5>
                   </button>
                 </h2>
                 <div

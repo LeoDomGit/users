@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Contact from '../components/Contact'
 import Carousel from "../components/Carousel";
+import Loader from "../components/Loading.jsx/Loader";
 function Home() {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
@@ -90,6 +91,7 @@ function Home() {
     <>
       <Subheader />
       {/* ***** Header Area Start ***** */}
+      {loading && (<Loader/>)}
       <header className="header-area header-sticky">
         <div className="container">
           <div className="row">

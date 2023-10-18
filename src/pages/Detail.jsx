@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import Header from "../components/Header";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import Loader from "../components/Loading.jsx/Loader";
 function Detail() {
   const { id } = useParams();
   const url = `https://api.trungthanhweb.com/api/`;
@@ -13,12 +14,13 @@ function Detail() {
   const [module, setModule] = useState([]);
   const [schedule, setschedule] = useState([]);
   const [bookSchedule, setBookSchedule] = useState(0);
-  const [ScheduleTime, setTime] = useState("");
+  const [ScheduleTime, setTime] = useState(null);
   const [cusName, setCusName] = useState("");
   const [cusEmail, setCusEmail] = useState("");
   const [cusPhone, setCusPhone] = useState("");
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+  const [loading ,setLoading]= useState(false);
   const validPhone = /(0[3|5|7|8|9])+([0-9]{8})\b/g;
   const handleShow = () => setShow(true);
 
@@ -27,9 +29,9 @@ function Detail() {
     schedule.forEach((el) => {
       if (el.id == id) {
         obj = el;
+        setBookSchedule(obj.id)
       }
     });
-    console.log(obj.schedule.time);
     setTime(obj.schedule.time);
   };
   const setPhone1 = (phone) => {
@@ -43,14 +45,18 @@ function Detail() {
     }
   };
   const handleShow1 = () => {
-    if (ScheduleTime == "") {
-      setBookSchedule(schedule[0].schedule.id);
+    if(ScheduleTime==null){
       setTime(schedule[0].schedule.time);
     }
     handleShow();
   };
   const submitBooking = () => {
-    if (cusName == "") {
+    if(!bookSchedule){
+      Toast.fire({
+        icon: "error",
+        title: "Vui lòng chọn giờ học",
+      });
+    }else  if (cusName == "") {
       Toast.fire({
         icon: "error",
         title: "Thiếu tên học viên",
@@ -71,10 +77,12 @@ function Detail() {
           email: cusEmail,
           phone: cusPhone,
           name: cusName,
-          idSchedule: bookSchedule.id,
+          idSchedule: bookSchedule,
         })
         .then(function (res) {
+          setLoading(true);
           if (res.data.check == true) {
+            setLoading(false);
             Toast.fire({
               icon: "success",
               title: "Đã đăng ký thành công",
@@ -82,22 +90,26 @@ function Detail() {
               window.location.replace('/');
             })
           }
-          if(res.data.msg.email){
-            Toast.fire({
-              icon: "error",
-              title: res.msg.email,
-            })
-          }else if(res.data.msg.phone){
-            Toast.fire({
-              icon: "error",
-              title: res.msg.phone,
-            })
-          }else if(res.data.msg.idSchedule){
-            Toast.fire({
-              icon: "error",
-              title: res.msg.idSchedule,
-            })
+          if(res.data.check==false){
+            setLoading(false);
+            if(res.data.msg.email){
+              Toast.fire({
+                icon: "error",
+                title: res.msg.email,
+              })
+            }else if(res.data.msg.phone){
+              Toast.fire({
+                icon: "error",
+                title: res.msg.phone,
+              })
+            }else if(res.data.msg.idSchedule){
+              Toast.fire({
+                icon: "error",
+                title: res.data.msg.idSchedule,
+              })
+            }
           }
+         
           
         })
         .catch(function (error) {
@@ -146,6 +158,7 @@ function Detail() {
   return (
     <>
       <Header />
+      {loading && (<Loader/>)}
       <Modal
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
@@ -252,8 +265,9 @@ function Detail() {
                               onChange={(e) => setBookSchedule1(e.target.value)}
                               id=""
                             >
+                              <option value="0" disabled selected> Chọn giờ học</option>
                               {schedule.length > 0 &&
-                                schedule.map((item, index) => (
+                               schedule.map((item, index) => (
                                   <option key={index} value={item.id}>
                                     {item.teacher} - {item.schedule.time}
                                   </option>

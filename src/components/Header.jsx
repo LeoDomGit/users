@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getEdu } from "../redux/eduSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom"
+import Loader from "./Loading.jsx/Loader";
 function Header() {
   const dispatch = useDispatch();
 
@@ -28,6 +29,7 @@ function Header() {
   return (
     <>
       {/* ***** Header Area Start ***** */}
+      {loading && (<Loader/>)}
       <header className="header-area header-sticky">
         <div className="container">
           <div className="row">

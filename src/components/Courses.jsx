@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getEdu } from "../redux/eduSlice";
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
+import Loader from "./Loading.jsx/Loader";
 function Courses() {
   const dispatch = useDispatch();
   const { educations, loading } = useSelector((state) => state.educations);
@@ -18,6 +19,7 @@ function Courses() {
   }, []);
   return (
     <>
+    {loading && (<Loader/>)}
       <section className="upcoming-meetings" id="meetings">
         <div className="container">
           <div className="row">

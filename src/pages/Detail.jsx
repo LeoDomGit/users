@@ -72,7 +72,7 @@ function Detail() {
         title: "Số điện thoại chưa hợp lệ",
       });
     } else {
-      setLoading(true);
+                setLoading(true);
       axios
         .post(url+"submitBill", {
           email: cusEmail,

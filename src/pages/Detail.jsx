@@ -72,6 +72,7 @@ function Detail() {
         title: "Số điện thoại chưa hợp lệ",
       });
     } else {
+      setLoading(true);
       axios
         .post(url+"submitBill", {
           email: cusEmail,
@@ -80,7 +81,7 @@ function Detail() {
           idSchedule: bookSchedule,
         })
         .then(function (res) {
-          setLoading(true);
+
           if (res.data.check == true) {
             setLoading(false);
             Toast.fire({

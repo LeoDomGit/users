@@ -6,7 +6,7 @@ import { getCourse } from "../redux/courseSlice";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Contact from '../components/Contact'
+import Contact from "../components/Contact";
 import Carousel from "../components/Carousel";
 import Loader from "../components/Loading.jsx/Loader";
 function Home() {
@@ -22,10 +22,10 @@ function Home() {
   const [classList, setClassList] = useState([]);
   const [data, setData] = useState([]);
   const [pagination, setPagination] = useState([]);
-  
-  const url = `https://api.trungthanhweb.com/api/`;
-  const urlimg = `https://api.trungthanhweb.com/images/`;
-  const [name,setName]=useState('');
+
+  const url = `https://api1.trungthanhweb.com/api/`;
+  const urlimg = `https://api1.trungthanhweb.com/images/`;
+  const [name, setName] = useState("");
   const changeSub1 = () => {
     if (sub1 == false) {
       setSub1(true);
@@ -57,14 +57,14 @@ function Home() {
           arr.push(i);
         }
         setPagination(arr);
-        setName(name)
+        setName(name);
       }
     });
   };
-  const setPage1=(page)=>{
+  const setPage1 = (page) => {
     setPage(page);
     setClassName(name);
-  }
+  };
   useEffect(() => {
     if (cateCourseID != 0) {
       fetch(url + "getClass/" + cateCourseID)
@@ -91,7 +91,7 @@ function Home() {
     <>
       <Subheader />
       {/* ***** Header Area Start ***** */}
-      {loading && (<Loader/>)}
+      {loading && <Loader />}
       <header className="header-area header-sticky">
         <div className="container">
           <div className="row">
@@ -209,7 +209,7 @@ function Home() {
                           <div className="col-lg-12">
                             <div className="row grid">
                               {data.length > 0 &&
-                                data.map((item,index) => (
+                                data.map((item, index) => (
                                   <div key={index} className="col-md-4">
                                     <div className="meeting-item">
                                       <div className="thumb">
@@ -270,7 +270,7 @@ function Home() {
           )}
         </div>
       </section>
-      <Contact/>
+      <Contact />
     </>
   );
 }

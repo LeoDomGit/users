@@ -16,10 +16,10 @@ function ChiTiet() {
   const [groupClass, setClass] = useState([]);
   const [pagination, setPagination] = useState([]);
   const [icCourseCate, setIDCate] = useState(0);
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
 
-  const url = `https://api.trungthanhweb.com/api/`;
-  const urlimg = `https://api.trungthanhweb.com/images/`;
+  const url = `https://api1.trungthanhweb.com/api/`;
+  const urlimg = `https://api1.trungthanhweb.com/images/`;
 
   const setClassName = (name) => {
     axios({
@@ -38,14 +38,14 @@ function ChiTiet() {
           arr.push(i);
         }
         setPagination(arr);
-        setName(name);  
+        setName(name);
       }
     });
   };
-  const setPage1=(page)=>{
+  const setPage1 = (page) => {
     setPage(page);
     setClassName(name);
-  }
+  };
   useEffect(() => {
     fetch(url + "getCourseCate/" + id)
       .then((res) => res.json())
@@ -112,34 +112,39 @@ function ChiTiet() {
                 </div>
                 <div className="col-lg-12">
                   <div className="row grid">
-                    {courses.length > 0 && courses.map((item,index)=>(
-                         <div key={index} className="col-lg-4 templatemo-item-col all soon">
-                         <div className="meeting-item">
-                           <div className="thumb">
-                             <div className="price">
-                               <span>{Intl.NumberFormat('en-US').format(item.price)}</span>
-                             </div>
-                             <a href={`/`+item.id}>
-                               <img src={urlimg+item.image} alt="" />
-                             </a>
-                           </div>
-                           <div className="down-content">
-                             <div className="date">
-                               <h6>
-                                 Nov <span>12</span>
-                               </h6>
-                             </div>
-                             <a href={`/`+item.id}>
-                               <h4>{item.name}</h4>
-                             </a>
-                             <p>
-                               {item.summary}
-                            
-                             </p>
-                           </div>
-                         </div>
-                       </div>
-                    ))}
+                    {courses.length > 0 &&
+                      courses.map((item, index) => (
+                        <div
+                          key={index}
+                          className="col-lg-4 templatemo-item-col all soon"
+                        >
+                          <div className="meeting-item">
+                            <div className="thumb">
+                              <div className="price">
+                                <span>
+                                  {Intl.NumberFormat("en-US").format(
+                                    item.price
+                                  )}
+                                </span>
+                              </div>
+                              <a href={`/` + item.id}>
+                                <img src={urlimg + item.image} alt="" />
+                              </a>
+                            </div>
+                            <div className="down-content">
+                              <div className="date">
+                                <h6>
+                                  Nov <span>12</span>
+                                </h6>
+                              </div>
+                              <a href={`/` + item.id}>
+                                <h4>{item.name}</h4>
+                              </a>
+                              <p>{item.summary}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                   </div>
                 </div>
                 <div className="col-lg-12">
@@ -148,11 +153,14 @@ function ChiTiet() {
                       {pagination.length > 0 &&
                         pagination.map((item) => (
                           <li>
-                            <button onClick={(e)=>setPage1(item)} className="ms-3" >{item}</button>
+                            <button
+                              onClick={(e) => setPage1(item)}
+                              className="ms-3"
+                            >
+                              {item}
+                            </button>
                           </li>
                         ))}
-
-                      
                     </ul>
                   </div>
                 </div>
